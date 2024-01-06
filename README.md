@@ -1,1 +1,1 @@
-# RI-TVBO
+# Discrete-temporal
