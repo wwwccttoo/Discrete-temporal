@@ -1,0 +1,118 @@
+clc; clear all; close all
+%%
+scrsz = get(0,'ScreenSize');
+font_size = 10;     % font size for plotting
+line_width = 1.5;     % line width for plotting
+
+%%
+load Res_STVBOwoPOS.mat;
+data_results = Res_STVBOwoPOS_1;
+
+xo1 = data_results(:,2:6);
+yo1 = data_results(:,8);
+do1 = data_results(:,9);
+
+data_results = Res_STVBOwoPOS_2;
+
+xo2 = data_results(:,2:6);
+yo2 = data_results(:,8);
+do2 = data_results(:,9);
+
+data_results = Res_STVBOwoPOS_3;
+
+xo3 = data_results(:,2:6);
+yo3 = data_results(:,8);
+do3 = data_results(:,9);
+
+data_results = Res_STVBOwoPOS_4;
+
+xo4 = data_results(:,2:6);
+yo4 = data_results(:,8);
+do4 = data_results(:,9);
+
+data_results = Res_STVBOwoPOS_5;
+
+xo5 = data_results(:,2:6);
+yo5 = data_results(:,8);
+do5 = data_results(:,9);
+
+load Res_STVBOwPOS.mat;
+data_results = Res_STVBOwPOS_1;
+
+xp1 = data_results(:,2:6);
+yp1 = data_results(:,8);
+dp1 = data_results(:,9);
+
+data_results = Res_STVBOwPOS_2;
+
+xp2 = data_results(:,2:6);
+yp2 = data_results(:,8);
+dp2 = data_results(:,9);
+
+data_results = Res_STVBOwPOS_3;
+
+xp3 = data_results(:,2:6);
+yp3 = data_results(:,8);
+dp3 = data_results(:,9);
+
+data_results = Res_STVBOwPOS_4;
+
+xp4 = data_results(:,2:6);
+yp4 = data_results(:,8);
+dp4 = data_results(:,9);
+
+data_results = Res_STVBOwPOS_5;
+
+xp5 = data_results(:,2:6);
+yp5 = data_results(:,8);
+dp5 = data_results(:,9);
+
+
+
+iter_no = data_results(:,1);
+%
+% iter_init = 10;
+%
+% dA_init  = 1.0;
+% dA_final = 1.5;
+%
+% for k = 1:length(data_results)
+%
+%     if k < iter_init + 1
+%         dA = dA_init;
+%     else
+%         dA = 0.5./(1.+exp(-0.15*(k-40-iter_init-1)))+1;
+%     end
+%
+%     dA_tot(k,1) = dA;
+% end
+
+
+%%
+
+figure0 = figure('Position', [2 scrsz(1)/2 scrsz(3)/4 scrsz(4)/2]);
+subplot(3,1,1)
+plot(iter_no, dp5, 'b-x', 'LineWidth', line_width, 'DisplayName', 'dA')
+ylabel('dA[%]'); grid;
+title('Uncertainty(drift)')
+ylim([0.90 1.60])
+subplot(3,1,2)
+plot(iter_no, yo1, '-x', 'LineWidth', line_width); hold on;
+plot(iter_no, yo2, '-x', 'LineWidth', line_width);
+plot(iter_no, yo3, '-x', 'LineWidth', line_width);
+plot(iter_no, yo4, '-x', 'LineWidth', line_width);
+plot(iter_no, yo5, '-x', 'LineWidth', line_width);
+ylabel('Thickness[nm]'); grid;
+title('Thickness: STVBO woPE');
+legend('1','2','3','4','5');
+ylim([0.7 1.3]);
+subplot(3,1,3)
+plot(iter_no, yp1, '-x', 'LineWidth', line_width); hold on;
+plot(iter_no, yp2, '-x', 'LineWidth', line_width);
+plot(iter_no, yp3, '-x', 'LineWidth', line_width);
+plot(iter_no, yp4, '-x', 'LineWidth', line_width);
+plot(iter_no, yp5, '-x', 'LineWidth', line_width);
+ylabel('Thickness[nm]'); grid;
+title('Thickness: STVBO wPE')
+legend('1','2','3','4','5');
+ylim([0.7 1.3]);
